@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <meta name="description" content="DiffEye generates continuous, diverse eye-tracking trajectories for natural images using a diffusion model with Corresponding Positional Embedding (CPE).">
+  <meta name="keywords" content="Diffusion Models, Eye Tracking, Scanpath, Saliency, Computer Vision">
+
+  <meta property="og:title" content="DiffEye: Diffusion-Based Continuous Eye-Tracking Data Generation Conditioned on Natural Images"/>
+  <meta property="og:description" content="DiffEye generates continuous, diverse eye-tracking trajectories for natural images using a diffusion model with CPE."/>
+  <meta property="og:url" content="https://diff-eye.github.io/"/>
+  <meta property="og:image" content="static/images/og_banner.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+
+  <meta name="twitter:title" content="DiffEye: Diffusion-Based Continuous Eye-Tracking Data Generation"/>
+  <meta name="twitter:description" content="DiffEye generates continuous, diverse eye-tracking trajectories for natural images using a diffusion model with CPE."/>
+  <meta name="twitter:image" content="static/images/twitter_banner.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DiffEye: Diffusion-Based Continuous Eye-Tracking Data Generation</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <style>
+    .badge { display:inline-block; padding:4px 10px; border-radius:999px; font-weight:700; font-size:12px; background:#f0f7ff; color:#0a3d62; border:1px solid #b9d6ff; letter-spacing:.02em; }
+    .equal-note { font-size: 0.9rem; opacity: 0.85; margin-top: .25rem; }
+    .buttons .button.is-disabled { pointer-events: none; opacity: .6; }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop has-text-centered" style="max-width: 900px;">
+      <h1 class="xtitle is-1 publication-title" style="font-size: 200%; font-weight: 800; margin-top: .6rem; text-align: center;">
+        DiffEye: Diffusion-Based Continuous Eye-Tracking Data Generation Conditioned on Natural Images
+      </h1>
+
+      <div class="is-size-5 publication-authors" style="text-align: center;">
+        <span class="author-block">Ozgur Kara<sup>*</sup></span>
+        <span class="author-block">Harris Nisar<sup>*</sup></span>
+        <span class="author-block">James M. Rehg</span>
+      </div>
+
+      <div class="is-size-5 publication-authors" style="margin-top: 6px; text-align: center;">
+        <span class="author-block">NeurIPS 2025</span>
+      </div>
+
+      <div class="is-size-6 publication-authors" style="margin-top: 6px;">
+        <span class="author-block">University of Illinois Urbana-Champaign</span>
+      </div>
+      <div class="equal-note">* Equal Contribution</div>
+
+      <div class="buttons is-centered" style="margin-top: 1rem; gap:.5rem; flex-wrap: wrap;">
+        <a class="button is-dark is-rounded" href="https://arxiv.org/abs/2509.16767" target="_blank">
+          <span class="icon"><i class="ai ai-arxiv"></i></span><span>arXiv</span>
+        </a>
+        <a class="button is-dark is-rounded" href="static/papers/diffeye.pdf" target="_blank">
+          <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper (PDF)</span>
+        </a>
+        <a class="button is-dark is-rounded is-disabled" title="Coming soon">
+          <span class="icon"><i class="fas fa-code"></i></span><span>Code (coming soon)</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop" style="max-width: 900px;">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Numerous models have been developed for scanpath and saliency prediction, which are typically trained on scanpaths, while the rich information contained in the raw trajectories is often discarded. Moreover, most existing approaches fail to capture the variability observed among human subjects viewing the same image. They generally predict a single scanpath of fixed, pre-defined length, which conflicts with the inherent diversity and stochastic nature of real-world visual attention. To address these challenges, we propose DiffEye, a diffusion-based training framework designed to model continuous and diverse eye movement trajectories during free viewing of natural images. Our method builds on a diffusion model conditioned on visual stimuli and introduces a novel component, namely Corresponding Positional Embedding (CPE), which aligns spatial gaze information with the patch-based semantic features of the visual input. By leveraging raw eye-tracking trajectories rather than relying on scanpaths, DiffEye captures the inherent variability in human gaze behavior and generates high-quality, realistic eye movement patterns, despite being trained on a comparatively small dataset. The generated trajectories can also be converted into scanpaths and saliency maps, resulting in outputs that more accurately reflect the distribution of human visual attention. DiffEye is the first method to tackle this task on natural images using a diffusion model while fully leveraging the richness of raw eye-tracking data. Our extensive evaluation shows that DiffEye not only achieves state-of-the-art performance in scanpath generation but also enables, for the first time, the generation of continuous eye movement trajectories.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop" style="max-width: 900px;">
+    
+    <div class="box">
+      <p class="has-text-weight-semibold">Figure 1: Comparison of different eye-tracking data types.</p>
+      <img src="static/images/motiv.png" alt="Comparison of stimulus, saliency map, scanpaths, and full eye movement trajectories" style="width:100%; border:1px solid #eee;">
+      <p class="is-size-6" style="margin-top:.5rem;">
+        (a) Original visual stimulus. (b) Saliency maps highlight regions of interest but do not capture the temporal dynamics of human attention. (c) Scanpaths offer a compressed representation of eye movement trajectories. (d) Full eye movement trajectories, recorded via eye trackers, provide detailed insights into attention dynamics. Example from MIT1003; each color represents a different subject, emphasizing inter-subject variability.
+      </p>
+      <p class="is-size-6 content" style="margin-top:1rem;">
+        <b>Motivation:</b> Existing models for predicting eye movements often use simplified data like scanpaths (c), which are sequences of discrete points. This discards the rich, continuous information found in raw eye-tracking trajectories (d). Furthermore, these models typically produce a single, deterministic output, failing to capture the natural variation in how different people look at the same image (as shown by the different colored paths). DiffEye addresses these limitations by training directly on raw trajectories to generate diverse and realistic eye movements that better reflect human visual attention.
+      </p>
+    </div>
+
+    <div class="box">
+      <p class="has-text-weight-semibold">Figure 2: An illustration of DiffEye.</p>
+      <img src="static/images/diffeye_architecture.png" alt="DiffEye training pipeline with CPE and U-Net cross-attention" style="width:100%; border:1px solid #eee;">
+      <p class="is-size-6" style="margin-top:.5rem;">
+        (a) End-to-end training: noise is added to trajectories; FeatUp extracts patch features; both pass through the CPE module and a U-Net with cross-attention, optimized via diffusion loss. (b) CPE aligns trajectory positions with image patch positions. (c) Inference: starting from noise, the model denoises to produce an eye-movement trajectory, which can be converted into scanpaths or saliency maps.
+      </p>
+    </div>
+
+    <div class="box">
+      <p class="has-text-weight-semibold">Figure 3: Qualitative comparison of scanpath generation.</p>
+      <img src="static/images/scanpath_dist_qual_0.png" alt="Qualitative scanpath comparison across methods and ground truth" style="width:100%; border:1px solid #eee;">
+      <p class="is-size-6" style="margin-top:.5rem;">
+        Scanpaths generated by DiffEye and baseline models are shown alongside ground truth across multiple scenes. Each row is a stimulus; columns show each method’s scanpaths.
+      </p>
+    </div>
+
+    <div class="box">
+      <p class="has-text-weight-semibold">Figure 4: Qualitative analysis and ablation study of continuous eye-movement trajectory generation.</p>
+      <img src="static/images/cont_ablations.png" alt="DiffEye qualitative trajectories and ablations w/o FeatUp, w/o CPE, w/o cross-attention, w/o patch-level features" style="width:100%; border:1px solid #eee;">
+      <p class="is-size-6" style="margin-top:.5rem;">
+        (a) Multiple trajectories generated by DiffEye with ground-truth overlays across several scenes. (b) Effect of removing FeatUp, CPE, U-Net cross-attention, and patch-level features on trajectory quality.
+      </p>
+    </div>
+
+    <div class="box">
+      <p class="has-text-weight-semibold">Figure 5: Qualitative comparison of saliency map predictions.</p>
+      <img src="static/images/saliency_fig_0.png" alt="Saliency maps from DiffEye and baselines compared to ground truth" style="width:100%; border:1px solid #eee;">
+      <p class="is-size-6" style="margin-top:.5rem;">
+        Saliency maps produced by DiffEye and baseline models alongside ground truth for multiple scenes. Rows correspond to different stimuli; columns show the stimulus, ground truth, and each model’s prediction.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="bibtex">
+  <div class="container is-max-desktop content" style="max-width: 900px;">
+    <h2 class="title is-4">BibTeX</h2>
+<pre><code>@article{kara2025diffeye,
+  title={DiffEye: Diffusion-Based Continuous Eye-Tracking Data Generation Conditioned on Natural Images},
+  author={Ozgur Kara and Harris Nisar and James M. Rehg},
+  journal={arXiv preprint arXiv:2509.16767},
+  year={2025},
+  url={https://arxiv.org/abs/2509.16767}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container has-text-centered">
+    <div class="content">
+      <p>
+        Built with the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+        Licensed under <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.
+      </p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
